@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import './App.css'
 
@@ -11,7 +12,13 @@ function Title(props) {
 const ProductCard = (props) => {
   return (
     <div className="product-card">
-      <img src={props.item.product_image} style={{ maxWidth: '100%' }} alt=""/>
+      <div class="product-thumbnail">
+        <img
+          src={props.item.product_image}
+          style={{ maxWidth: '100%' }}
+          alt={props.item.product_image}
+        />
+      </div>
       <span className="product-name">{props.item.product_name}</span>
       <div className="product-description">
         {props.item.product_detail}
@@ -19,7 +26,7 @@ const ProductCard = (props) => {
       <div className="product-price">
         ฿{props.item.price}
       </div>
-      <button className="btn btn-success btn-lg">Buy</button>
+      <button className="btn btn-success">Buy</button>
     </div>
   )
 }
@@ -52,6 +59,17 @@ class ProductList extends React.Component {
     user: {
       name: 'Bas'
     }
+  }
+
+  componentDidMount = () => {
+    axios.get(
+      'https://dry-scrubland-02499.herokuapp.com/api/v1/products'
+    ).then((response) => {
+      console.log('response data', response)
+      this.setState({
+        products: response.data
+      })
+    })
   }
 
   render() {
