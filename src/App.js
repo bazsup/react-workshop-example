@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import './App.css'
+import FormCreateProduct from './components/FormCreateProduct';
 
 function Title(props) {
   return (
@@ -75,6 +76,7 @@ class ProductList extends React.Component {
   render() {
     return (
       <div className="container px-0">
+        <FormCreateProduct />
         <Title name={`user: ${this.state.user.name}`} />
         <Title name="New Product!" />
         <ProductCard item={this.state.products[0]} />
