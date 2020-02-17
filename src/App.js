@@ -75,7 +75,7 @@ class ProductList extends React.Component {
   render() {
     return (
       <div className="container px-0">
-        <Title name={this.state.user.name} />
+        <Title name={`user: ${this.state.user.name}`} />
         <Title name="New Product!" />
         <ProductCard item={this.state.products[0]} />
         <Title name="Product list"/>
